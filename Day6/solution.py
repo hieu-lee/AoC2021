@@ -22,8 +22,9 @@ def question2(x):
         lines = f.readlines()
         state = [int(x) for x in lines[0].split(",")]
     res = 0
+    F = question2_helper(8, x)
     for fish in state:
-        res += question2_helper(fish, x)
+        res += F[fish][x]
     return res
 
 
@@ -43,7 +44,7 @@ def question2_helper(m, n):
                 F[i][j] = F[i][j-7] + F[2+i][j-7]
             else:
                 F[i][j] = F[i-7][j-7]
-    return F[m][n]
+    return F
 
 
 print(question2(256))
